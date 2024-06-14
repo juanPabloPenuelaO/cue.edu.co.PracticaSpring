@@ -5,7 +5,6 @@ import model.Reservations;
 
 import java.util.List;
 public interface RepositoryGeneral<T> {
-    void addUser(userDTO userDTO);
 
     List<T> list();
     T byId(int id);
