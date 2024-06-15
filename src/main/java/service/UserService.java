@@ -16,7 +16,6 @@ public class UserService {
     }
 
     public User save(User user) {
-        // Puedes implementar lógica para cifrar la contraseña aquí si lo deseas
         userRepository.save(user);
         return user;
     }

@@ -1,4 +1,4 @@
-package controllers;
+package cue.edu.co.PracticaSpringBoot.demo.controllers;
 
 import model.User;
 import org.springframework.beans.factory.annotation.Autowired;
