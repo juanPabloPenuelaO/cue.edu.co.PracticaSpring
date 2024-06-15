@@ -11,28 +11,24 @@ import org.springframework.web.bind.annotation.RestController;
 import service.UserService;
 
 @RestController
-@RequestMapping("/login")
-public class LoginController {
+@RequestMapping("/registro")
+public class RegistroController {
 
     @Autowired
     private UserService userService;
 
-    @PostMapping
-    public ResponseEntity<String> iniciarSesion(@RequestBody User loginUser) {
-        if (loginUser.getName() == null || loginUser.getPassword() == null) {
+    @PostMapping("/nuevo")
+    public ResponseEntity<String> registrarNuevoUsuario(@RequestBody User user) {
+        if (user.getName() == null || user.getPassword() == null) {
             return ResponseEntity.badRequest().body("Nombre de usuario y contraseña son obligatorios");
         }
 
-        User user = userService.findByUsername(loginUser.getName());
-
-        if (user == null) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Usuario no encontrado");
+        if (userService.findByUsername(user.getName()) != null) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("El nombre de usuario ya está en uso");
         }
 
-        if (!user.getPassword().equals(loginUser.getPassword())) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Contraseña incorrecta");
-        }
+        userService.save(user);
 
-        return ResponseEntity.ok("Inicio de sesión exitoso");
+        return ResponseEntity.status(HttpStatus.CREATED).body("Usuario registrado exitosamente");
     }
 }

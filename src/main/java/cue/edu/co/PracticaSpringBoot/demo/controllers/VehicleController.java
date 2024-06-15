@@ -11,7 +11,7 @@ import java.util.List;
 @RequestMapping("/vehicles")
 public class VehicleController {
 
-    /*@Autowired
+    @Autowired
     private VehicleService vehicleService;
 
     @GetMapping
@@ -38,6 +38,6 @@ public class VehicleController {
     @DeleteMapping("/{id}")
     public void deleteVehicle(@PathVariable int id) {
         vehicleService.deleteVehicle(id);
-    }*/
+    }
 }
 

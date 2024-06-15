@@ -1,10 +1,9 @@
 package service;
 
-import model.Reservations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import repository.reservationsImpl.ReservationsRepositoryJDBC;
+import model.Reservations;
 
 import java.util.List;
 
@@ -22,17 +21,14 @@ public class ReservationsService {
         return reservationsRepository.byId(id);
     }
 
-    @Transactional
     public void saveReservation(Reservations reservation) {
         reservationsRepository.save(reservation);
     }
 
-    @Transactional
     public void updateReservation(Reservations reservation) {
         reservationsRepository.update(reservation);
     }
 
-    @Transactional
     public void deleteReservation(int id) {
         reservationsRepository.delete(id);
     }

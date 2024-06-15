@@ -28,9 +28,9 @@ public class UserRepositoryJDBC {
         }
     };
 
-    public User findByUsername(String username) {
-        String sql = "SELECT * FROM users WHERE username = ?";
-        return jdbcTemplate.queryForObject(sql, new Object[]{username}, userRowMapper);
+    public User findByUsername(String name) {
+        String sql = "SELECT * FROM users WHERE name = ?";
+        return jdbcTemplate.queryForObject(sql, new Object[]{name}, userRowMapper);
     }
 
     public void save(User user) {
